@@ -10,7 +10,7 @@ export const Config = {
     },
     headers: {
         'content-type': 'application/json',
-        'X-RapidAPI-Key': '3710f82b8bmsh7c9c4ad5ba3bb94p125b2bjsna641b01a4e87',
+        'X-RapidAPI-Key': process.env.API_KEY,
         'X-RapidAPI-Host': 'openai80.p.rapidapi.com'
       }
 }
