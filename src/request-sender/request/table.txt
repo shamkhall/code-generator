@@ -1,0 +1,6 @@
+Create Postgres table
+Table favorite_articles:
+favorite_article_id
+article_id
+user_id
+pet_profile_id

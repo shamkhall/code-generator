@@ -8,9 +8,9 @@ async function bootstrap () {
     const fileManagerService = new FileManagerService(Config.folder_name);
 
     console.log('[>] Sending message...')
-    const message = fileManagerService.readFromFileSync('src/message.txt')
+    const message = fileManagerService.readFromFileSync('src/request-sender/request/find-by-array.txt')
     const sql = await requestSenderService.send(message)
-    fileManagerService.toFileSync(`${Config.folder_name}/func.sql`, sql);
+    fileManagerService.toFileSync(`${Config.folder_name}/find-by-array.sql`, sql);
     console.log('[>] Done!')
 }
 

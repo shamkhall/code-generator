@@ -1,0 +1,28 @@
+According to public.articles table, generate postgres find all function.
+Parameter names has to be like: _param_name and use alias with columns.
+Use only article_id ARRAY as filter.
+Exclude soft_deleted
+
+CREATE TABLE public.articles
+(
+    article_id   SERIAL PRIMARY KEY,
+    category_id  INTEGER NOT NULL,
+    pet_id       INTEGER NOT NULL,
+    cover_photo  VARCHAR NOT NULL,
+    is_published BOOLEAN                     DEFAULT FALSE,
+    soft_deleted BOOLEAN                     DEFAULT FALSE,
+    created_at   TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW()
+);
+
+like this:
+CREATE OR REPLACE FUNCTION function-name(_param)
+RETURNS TABLE (
+    ...
+)
+AS $$
+BEGIN
+    RETURN QUERY SELECT columns
+                 FROM table-name alias;
+END;
+$$
+LANGUAGE plpgsql;
