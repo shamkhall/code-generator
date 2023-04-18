@@ -1,20 +1,26 @@
-import axios from 'axios';
+import {Configuration, OpenAIApi} from 'openai';
 import {Config} from "../config/config";
 
 export class RequestSenderService {
-    async send(message: string) {
-        const data = Config.data;
-        data.messages[0].content = message;
-        const options = {
-            method: 'POST',
-            url: `${Config.baseUrl}/${Config.gpt}`,
-            headers: Config.headers,
-            data: Config.data
-        };
+    async send(message: string): Promise<string> {
 
-        const response = await axios.request(options)
+        const configuration = new Configuration({
+            apiKey: Config.api_key,
+        });
+        const openai = new OpenAIApi(configuration);
 
-        console.log(response.data)
-        return response.data.choices[0].message.content
+        const response = await openai.createCompletion({
+            model: "text-davinci-003",
+            prompt: message,
+            temperature: 0.3,
+            max_tokens: 1000,
+            top_p: 1.0,
+            frequency_penalty: 0.0,
+            presence_penalty: 0.0,
+        });
+        return response?.data?.choices?.[0]?.text?.trim();
+    }
+    async sendMock (message: string): Promise<string> {
+        return 'OK';
     }
 }

@@ -1,5 +1,5 @@
 according to this table, generate postgres find all function
-with limit offset and all possible filters
+with limit offset and all possible filters, parameter names has to be like: _param_name
 
 create table if not exists public.walk_record
 (
