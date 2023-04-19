@@ -1,6 +1,6 @@
 import {BrowserWindow, ipcMain} from "electron";
 import path from "path";
-import {setConfig} from "./set-config";
+import {getAnswer} from "./get-answer";
 
 export function createWindow () {
     const win = new BrowserWindow({
@@ -13,5 +13,5 @@ export function createWindow () {
     })
 
     win.loadFile(path.resolve('src/public/index.html'))
-    setConfig(win)
+    getAnswer(win)
 }

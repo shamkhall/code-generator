@@ -1,0 +1,14 @@
+According to favorite_articles table, generate postgres delete procedure.
+Parameter names has to be like: _param_name
+
+$tableStructure
+
+example:
+CREATE OR REPLACE PROCEDURE procedure-name(PARAMS)
+
+AS $$
+BEGIN
+    delete statement
+END;
+$$
+LANGUAGE plpgsql;

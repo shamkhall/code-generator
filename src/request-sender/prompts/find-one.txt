@@ -1,0 +1,17 @@
+according to this table, generate postgres find one function
+parameter names has to be like: _param_name and use alias with columns
+
+$tableStructure
+
+like this:
+CREATE OR REPLACE FUNCTION function-name()
+RETURNS TABLE (
+    ...
+)
+AS $$
+BEGIN
+    RETURN QUERY SELECT use alias with columns
+                 FROM table-name alias;
+END;
+$$
+LANGUAGE plpgsql;

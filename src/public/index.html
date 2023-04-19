@@ -44,12 +44,31 @@
 
 <div class="container">
     <form id="inputForm">
-        <label for="subject">Prompt</label>
-        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+        <label for="subject">Insert The Table</label>
+        <textarea id="subject" name="subject" placeholder="Insert The Table.." style="height:200px"></textarea>
 
-        <h3>Compilation</h3>
-        <label for="compilation">Compilation</label>
-        <textarea id="compilation" name="subject" style="height:200px"></textarea>
+        <label for="file_path">Insert The File Path</label>
+        <input type="text" id="file_path" name="file_path" placeholder="Insert The File Path" >
+
+        <div>
+            <label>What do you want to generate?</label> <br>
+            <p style="font-size: small">Functions:</p>
+            <input type="checkbox" id="find_all" name="find_all" value="true">
+            <label for="find_all"> find-all</label><br>
+            <input type="checkbox" id="find_one" name="find_one" value="true">
+            <label for="find_one"> find-one</label><br>
+            <p style="font-size: small">Procedures:</p>
+            <input type="checkbox" id="update" name="update" value="true">
+            <label for="update"> update</label><br>
+            <input type="checkbox" id="create" name="create" value="true">
+            <label for="create"> create</label><br>
+            <input type="checkbox" id="delete" name="delete" value="true">
+            <label for="delete"> delete</label><br>
+        </div>
+        <br><br>
+
+        <o style="color: #04AA6D; display: block">Success!</o>
+        <br>
 
         <input type="submit" value="Submit">
     </form>
