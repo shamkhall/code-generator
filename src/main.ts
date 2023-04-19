@@ -1,17 +1,25 @@
-import {RequestSenderService} from "./request-sender/request-sender.service";
-import {FileManagerService} from "./file-manager/file-manager.service";
-import {Config} from "./config/config";
+import {app, BrowserWindow} from 'electron';
+import {createWindow} from "./window/create-windows";
 
-async function bootstrap () {
-    console.log('[>] Getting things ready...')
-    const requestSenderService = new RequestSenderService()
-    const fileManagerService = new FileManagerService(Config.folder_name);
+async function bootstrap() {
 
-    console.log('[>] Sending message...')
-    const message = fileManagerService.readFromFileSync('src/request-sender/request/find-by-array.txt')
-    const sql = await requestSenderService.send(message)
-    fileManagerService.toFileSync(`${Config.folder_name}/find-by-array.sql`, sql);
-    console.log('[>] Done!')
+    app.whenReady().then(() => {
+        createWindow()
+
+        app.on('activate', () => {
+            if (BrowserWindow.getAllWindows().length === 0) {
+                createWindow()
+            }
+        })
+
+    })
+
+    app.on('window-all-closed', () => {
+        if (process.platform !== 'darwin') {
+            app.quit()
+        }
+    })
 }
 
 bootstrap();
+
