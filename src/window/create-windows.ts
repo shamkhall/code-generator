@@ -8,7 +8,7 @@ export function createWindow () {
         height: 850,
         webPreferences: {
             preload: path.resolve('src/public/preload.js'),
-            devTools: false
+            // devTools: false
         }
     })
 

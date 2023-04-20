@@ -1,7 +1,9 @@
 const { ipcRenderer } = require('electron');
 
 window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('inputForm').addEventListener('submit', (event) => {
+    document.getElementById('inputForm').addEventListener('submit', async (event) => {
+        document.getElementById('progress').style.width = `0%`;
+
         event.preventDefault();
         const res = {}
 
@@ -19,9 +21,21 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         ipcRenderer.send('inputSubmit', res);
+
+        for (let i = 0; i <= 100; i++) {
+            await getDelay();
+            document.getElementById('progress').style.width = `${i}%`;
+        }
+
     });
 
     ipcRenderer.on('result', (evt, message) => {
         document.getElementById('compilation').innerText = message;
     })
 })
+
+function getDelay () {
+    return new Promise((resolve, reject) =>
+        setTimeout(resolve, 20)
+    )
+}
